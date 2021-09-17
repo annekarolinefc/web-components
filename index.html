@@ -5,8 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web Components</title>
+    <script>
+        class HelloWorldElement extends HTMLElement{
+            constructor(){
+                super();
+                //criar o Shadow DOM
+                this.attachShadow({mode: "open"});
+            
+                const span = document.createElement("span");
+                span.textContent = "Hello World"
+                this.shadowRoot.append(span);
+            }
+        }
+        customElements.define("hello-world", HelloWorldElement);
+    </script>
 </head>
 <body>
-    
+    <h1>EXEMPLO 01</h1>
+    <hello-world></hello-world>
 </body>
 </html>
