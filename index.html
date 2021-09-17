@@ -5,6 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web Components</title>
+
+</head>
+<body>
+    <h1>EXEMPLO 01</h1>
+    <hello-world></hello-world>
+
+    <p>Dois tipos de Web Components: Autonomous custom e built-in</p>
+
+    <h2>Customized built-in element</h2>
+    <p>Eelemento ul customizado que colore cada item de uma cor diferente</p>
+    <ul is="lista-colorida">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+
     <script>
         class HelloWorldElement extends HTMLElement{
             constructor(){
@@ -18,10 +35,21 @@
             }
         }
         customElements.define("hello-world", HelloWorldElement);
+        
+        class ListaColorida extends HTMLUListElement {
+            constructor(){
+                super();
+                console.log("ListaColorida");
+
+                const lis = this.querySelectorAll("li");
+                console.log(lis.length);
+                for (let i=0; i< lis.length; i++){
+                    lis[i].style.color = `hsl(${(i/lis.length)*360}, 100%, 50%)`;
+                }
+            }    
+        }
+        //registrar o elemento
+        customElements.define("lista-colorida", ListaColorida, {extends: "ul"} )
     </script>
-</head>
-<body>
-    <h1>EXEMPLO 01</h1>
-    <hello-world></hello-world>
 </body>
 </html>
