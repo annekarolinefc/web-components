@@ -1,0 +1,8 @@
+SVG - Scalable Vector Graphics
+
+- Suporte nativo no navegador
+- Podem ser definidos em arquivos XML, ou inseridos diretamente dentro do HTML
+    - Podemos manipulá-los via Javascript
+
+Exercicio:
+Gerar um gráfico de linha com SVG e Javascript
