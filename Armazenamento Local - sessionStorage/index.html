@@ -15,8 +15,8 @@
 <body>
     <h1>Session Storage</h1>
     <input id="input"/> <br>
-    <button id="salvar">Salvar no localStorage</button>
-    <button id="limpar">Remover do localStorage</button>
+    <button id="salvar">Salvar no sessionStorage</button>
+    <button id="limpar">Remover do sessionStorage</button>
     
     <script>
         const input = document.getElementById("input")
@@ -33,10 +33,6 @@
             sessionStorage.removeItem("chave-1");
         });
 
-        window.addEventListener("storage", ()=>{
-            input.value = sessionStorage.getItem("chave-1");
-            console.log("storage")
-        });
     </script>
 </body>
 </html>
