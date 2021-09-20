@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de Vídeo</title>
+    <style>
+        button, a{
+            font-size: 20px;
+        }
+        canvas, video{
+            border: 2px solid grey;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Captura de Vídeo</h1>
+    <button onclick="tirarFoto()">Tirar foto</button> <br>
+    <video width="320" height="240" id="video"></video>
+    <canvas width="320" height="240" id="canvas"></canvas> <!--tirar foto do video-->
+    <a id="dl" href="#"download>Download da foto</a>
+
+    <script>
+        const video = document.getElementById("video");
+        const canvas = document.getElementById("canvas");
+        const dlLink = document.getElementById("dl");
+        dlLink.style.display = "none" //esconder link
+        //CHAMAR A API - obter permissão
+        navigator.mediaDevices
+        .getUserMedia({
+            audio: false,
+            video: true,
+        })
+        .then((stream) => {
+            video.srcObject = stream;
+            video.onloadedmetadata = () => {
+                video.play(); //reproduzindo a camera na página
+            };
+        });
+
+        function tirarFoto(){
+            //CAPTURA DA FOTO
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(video, 0, 0, 320, 240);
+            //DOWNLOAD DA FOTO
+            const hrefImg = canvas.toDataURL("image/png");
+            dlLink.style.display = "inline";
+            dlLink.href=hrefImg;
+        }
+    </script>
+</body>
+</html>

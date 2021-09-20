@@ -1,0 +1,12 @@
+USO DA API - getUserMedia
+    - requer autorização do usuário
+    - Obtemos um stream, que pode ser usado como fonte de elementos <video> ou <audio>
+
+    const stream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: false
+    })
+
+
+Exemplo
+Tirar uma foto com a cÂmera do dispositivo.
