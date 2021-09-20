@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encapsular em Módulos</title>
+    <script type = "module" src="/Encapsular web Components/script.js"></script>
+</head>
+<body>
+    <h1>Encapsular Web Components em Módulos</h1>
+
+    <hello-world>
+        <!--sem slots: conteudo padrão. Estilizado com as regras de estilo do shadowdown-->
+    </hello-world>
+
+    <hello-world>
+        <!--exibindo os slots. Não há estilização conforme as regras de estilo.-->
+        <h2 slot="titulo">Titulo Definido</h2>
+        <h2 slot="titulo">Titulo 2</h2>
+        <div slot="conteudo">Este é um conteúdo do elemento</div>
+    </hello-world>
+
+</body>
+</html>
