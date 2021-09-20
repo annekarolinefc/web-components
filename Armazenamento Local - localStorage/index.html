@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <style>
+        button{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Local Storage</h1>
+    <input id="input"/> <br>
+    <button id="salvar">Salvar no localStorage</button>
+    <button id="limpar">Remover do localStorage</button>
+    
+    <script>
+        const input = document.getElementById("input")
+        const botaoSalvar = document.getElementById("salvar")
+        const botaoLimpar = document.getElementById("limpar")
+
+        input.value = localStorage.getItem("chave-1");
+
+        botaoSalvar.addEventListener("click", () => {
+            localStorage.setItem("chave-1", input.value);
+        });
+
+        botaoLimpar.addEventListener("click", () => {
+            localStorage.removeItem("chave-1");
+        });
+
+        window.addEventListener("storage", ()=>{
+            input.value = localStorage.getItem("chave-1");
+            console.log("storage")
+        });
+    </script>
+</body>
+</html>

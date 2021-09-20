@@ -1,0 +1,11 @@
+Armazenamento de dados com localStorage
+
+- Introduzir a API localStorage, que permite armazenar dados no lado do cliente.
+
+LOCALSTORAGE 
+    - objeto que permite armazenar chave/valor
+    - dados persistem no navegador, por tempo indefinido
+    - dados salvos por origem (protocolo, domínio e porta)
+
+localStorage.setItem("chave", "um valor qualquer")
+const valor = localStorage.getItem("chave")
