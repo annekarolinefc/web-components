@@ -1,0 +1,8 @@
+Alternativa ao: 
+    angular
+    reacts 
+    vue 
+Como funciona:
+O Stelve compila o código fonte para Javascript puro, sem código do framework.
+O DOM é utilizado "magicamente" ao mudar o estado.
+Codigo em arquivos .svelte, como Javascript, HTML e CSS.
