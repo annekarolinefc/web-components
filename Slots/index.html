@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Template</title>
+    <script>
+        class HelloWorldElement extends HTMLElement{
+            constructor(){
+                super();
+
+                this.attachShadow({ mode: "open" });
+                const tp1 = document.getElementById("template-wc");
+                this.shadowRoot.append(tp1.content.cloneNode(true));
+            }
+        }
+        customElements.define("hello-world", HelloWorldElement);
+    </script>
+</head>
+<body>
+    <h1>Slots</h1>
+    <template id="template-wc">
+        <!--TEMPLATE NAO É RENDERIZADO NA PÁGINA-->
+        <style>
+            :host{
+                display: block; 
+                background-color: #666;
+                color: white;
+                padding: 1em;
+                margin: 1em;
+            }
+            h2{
+                color: pink;
+            }
+        </style>
+        
+        <slot name="titulo">
+            <h2>Este é o titulo padrão</h2>
+        </slot>
+        <p>Aqui vai o conteúdo do elemento: </p>
+        <slot name="conteudo"></slot>
+    </template>
+    
+    <hello-world>
+        <!--sem slots: conteudo padrão. Estilizado com as regras de estilo do shadowdown-->
+    </hello-world>
+
+    <hello-world>
+        <!--exibindo os slots. Não há estilização conforme as regras de estilo.-->
+        <h2 slot="titulo">Titulo Definido</h2>
+        <h2 slot="titulo">Titulo 2</h2>
+        <div slot="conteudo">Este é um conteúdo do elemento</div>
+    </hello-world>
+
+</body>
+</html>
