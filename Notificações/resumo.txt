@@ -1,0 +1,11 @@
+- API Notification, que permite que uma aplicação Web envie notificações no sistema
+
+
+- Requer autorização do usuário
+- após obter autorização, instanciamos o objeto Notification
+
+Notification.requestPermission().then((permission) => {
+    if (permission === "granted"){
+        new Notification("Olá")
+    }
+});
