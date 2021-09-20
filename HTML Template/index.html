@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Template</title>
+    <script>
+        class HelloWorldElement extends HTMLElement{
+            constructor(){
+                super();
+
+                this.attachShadow({ mode: "open" });
+                const tp1 = document.getElementById("template-wc");
+                this.shadowRoot.append(tp1.content.cloneNode(true));
+            }
+        }
+        customElements.define("hello-world", HelloWorldElement);
+    </script>
+</head>
+<body>
+    <template id="template-wc">
+        <!--TEMPLATE NAO É RENDERIZADO NA PÁGINA-->
+        <style>
+            :host{
+                display: block; 
+                background-color: #666;
+                color: white;
+                padding: 1em;
+                margin: 1em;
+            }
+        </style>
+        <h2>Este é um template. Aqui é apresentado o título</h2>
+        <p>Este é um conteúdo definido dentro do template</p>
+    </template>
+    <h1>HTML Template</h1>
+    <hello-world></hello-world>
+    <script>
+        const tp1 = document.getElementById("template-wc");
+        document.body.append(tp1.content.cloneNode(true));
+    </script>
+</body>
+</html>
