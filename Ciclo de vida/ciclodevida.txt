@@ -1,0 +1,5 @@
+connectedCallBack: elemento é adicionado ao DOM
+
+disconnectedCallback: elemento é removido do DOM
+
+attributeChangedCallback: atributo é adicionado, removido ou modificado
