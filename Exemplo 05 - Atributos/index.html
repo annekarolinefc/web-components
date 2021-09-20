@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components - Atributos</title>
+    <script>
+        class HelloWorldElement extends HTMLElement{
+            static observedAttributes = ["data-name"];
+            constructor(){
+                super();
+                this.attachShadow({ mode: "open" });
+                this.spanE1 = document.createElement("span");
+                this.shadowRoot.append(this.spanE1);
+            }
+
+            //lendo atributos pelo connected callbacj
+            connectedCallback(){
+                const name = this.getAttribute("data-name")
+                this.spanE1.textContent = `Hello ${name}!`;
+            }
+
+            atributeChangedCallback(attr, oldValue, newValue){
+                if(attr === "data-name"){
+                    console.log(`attr change ${attr} ${oldValue} ${newValue}`);
+                    this.spanE1.textContent = `Hello ${newValue}!`;
+                }
+                
+            }
+        }
+        customElements.define("hello-world", HelloWorldElement);
+    </script>
+</head>
+<body>
+    <h1>Exemplo 05 - Atributos</h1>
+    <hello-world data-name="Danilo"></hello-world>
+</body>
+</html>
