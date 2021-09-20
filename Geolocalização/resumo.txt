@@ -1,0 +1,15 @@
+Introduzir a API navigator.geolocation, que permite obter a geolocalização do dispositivo.
+
+    - A API requer autorização do usuário
+    - Uso básico:
+        navigator.geolocation.getCurrentPosition(pos => {
+            console.log(`Latitude: ${pos.coords.latitude}`);
+            console.log(`Longitude: ${pos.coords.longitude}`);
+        })
+
+    -Exemplo:
+    exibir a nossa localização no Google Maps.
+
+
+    API UTILIZADA PARA O MAPA
+    https://developers.google.com/maps/documentation/embed/map-generator

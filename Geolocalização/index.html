@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização no Google Maps</title>
+    <style>
+        .loc{
+            font-style: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Geolocalização</h1>
+    <div class="loc" id="loc"></div>
+    <iframe id=map width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+        src="https://www.google.com/maps/embed/v1/view?zoom=3&center=-14.2350,-51.9253&key=AIzaSyAZph83MLn3xZ9BGXcSU2l8QXVIlSBhHC0"></iframe>
+
+    <script>
+        //recebe dois callbacks
+         const id = navigator.geolocation.getCurrentPosition( //pode utilizar watchPosition para registrar movimentação
+            (position) => {
+                console.log("OK");
+                console.log(position);
+                const { latitude, longitude } = position.coords; //desestruturação
+                document.getElementById("loc").textContent = ` Você está na latitude ${latitude} e longitude ${longitude}`; //mudando o texto
+                const src = `https://www.google.com/maps/embed/v1/view?zoom=15&center=${latitude},${longitude}&key=AIzaSyAZph83MLn3xZ9BGXcSU2l8QXVIlSBhHC0`;
+                document.getElementById("map").src = src;
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+        //navigator.geolocation.clearWatch(id);
+    </script>
+</body>
+
+</html>
