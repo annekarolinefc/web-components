@@ -1,0 +1,2 @@
+- Criar Web Components
+- Utilizar SVG
